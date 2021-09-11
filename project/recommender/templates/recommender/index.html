@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Top rated movies{% endblock title %}
+
+{% block genre_filter %}
+    {% if genres_list %}
+    <p>Available genres</p>
+        <ul class="nav flex-column">
+        {% for genre in genres_list %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'recommender:by_genre' genre %}">{{genre}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+    {% endif %} 
+{% endblock genre_filter %}
+
+{% block content %}  
+    {% if genre_filter %}
+        <h4 class="text-center"> Recommended {{ genre_filter }} movies </h4>
+    {% endif %}
+    {% if rating_list %}
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie, value in rating_list.items %}
+            <tr>
+
+            <td>{{movie}}</td>
+            <td>
+                <ul class="list-group list-group-flush">
+                    {% for item, value in value.rating.items %}
+                    <li class="list-group-item">{{ item }} ({{ value }})</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>{{value.genre}}</td>
+        {% endfor %}
+        </tbody>
+                
+    </table>
+    {% else %}
+        <p>No suggestions available.</p>
+    {% endif %}
+{% endblock content %}

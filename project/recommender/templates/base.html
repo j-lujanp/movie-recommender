@@ -1,0 +1,75 @@
+{% load static %}
+{# HTML5 declaration #}
+<!DOCTYPE html>
+<html lang="en">
+    {# Make modifiable head elements #}
+    <head>
+        <title>{% block title %}Movie Recommender {% endblock title %}</title>
+        {% block head_meta %}
+            {% block head_meta_charset %}
+                <meta http-equiv="Content-Type"
+                      content="text/html; charset=utf-8" />
+            {% endblock head_meta_charset %}
+            {% block head_meta_contentlanguage %}
+                <meta http-equiv="Content-Language" value="en-US" />
+            {% endblock head_meta_contentlanguage %}
+            {% block head_meta_viewport %}
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=1.0">
+            {% endblock head_meta_viewport %}
+        {% endblock head_meta %}
+        {% block head_css %}
+            {% block head_css_site %}
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+                <link href="{% static 'recommender/css/app.css' %}"
+                      rel="stylesheet" media="screen">
+            {% endblock head_css_site %}
+            {% block head_css_section %}{% endblock head_css_section %}
+            {% block head_css_page %}{% endblock head_css_page %}
+        {% endblock head_css %}
+    </head>
+
+    <body>
+        {# The Document Body #}
+        <ul class="nav nav-fill">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'recommender:index' %}" style="text-align:initial">
+              Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/accounts/logout" style="text-align:end">
+              Logout ({{ user.username }})</a>
+            </li>
+        </ul>
+        
+        <div id="site-wrapper" class="container">
+            <div class="row">
+                <div id="sidebar" class="col-2">
+                {% block genre_filter %}
+                    Block content template text
+                {% endblock genre_filter %}
+                </div>
+                <div id="table_content" class="col-10">
+                {% block content %}
+                    Block content template text
+                {% endblock content %}
+                </div>
+            </div>
+        </div>
+        {# The Footer #}
+        <div class="footer">
+            <div class="container">
+                <p>Movie Recommender</p>
+            </div>
+        </div>
+    </body>
+    {# Set of blocks that can be used to display JavaScript files #}
+    {% block footer_javascript %}
+        {% block footer_javascript_site %}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+            
+        {% endblock footer_javascript_site %}
+        {% block footer_javascript_section %}{% endblock footer_javascript_section %}
+        {% block footer_javascript_page %}{% endblock footer_javascript_page %}
+    {% endblock footer_javascript %}
+</html>
