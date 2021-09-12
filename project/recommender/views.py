@@ -5,7 +5,7 @@ from recommender import movieservices
 from django.contrib.auth.decorators import login_required
 from django.conf.urls import url
 from .models import Rater, Rating
-from .serializers import RatingSerializer
+from .serializers import RatingSerializer, RaterSerializer
 
 #We call this function in order to update the database before
 #a response. In an evolution this should be done in the background
@@ -66,7 +66,11 @@ def by_genre(request, genre_name):
     return render(request, 'recommender/index.html', context)
 
 #API Views
-class RatingViewSet(viewsets.ReadOnlyModelViewSet):
+class RaterViewSet(viewsets.ModelViewSet):
+    serializer_class = RaterSerializer
+    queryset = Rater.objects.all()
+
+class RatingViewSet(viewsets.ModelViewSet):
     serializer_class = RatingSerializer
     
     def get_queryset(self):

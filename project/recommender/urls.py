@@ -6,6 +6,7 @@ from . import views
 #For the API REST
 router = DefaultRouter()
 router.register(r'ratings', views.RatingViewSet, basename='rating')
+router.register(r'raters', views.RaterViewSet, basename='rater')
 
 
 app_name='recommender'
