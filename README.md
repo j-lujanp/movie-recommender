@@ -54,6 +54,7 @@ The Rating API allow us to filter by genre and rater:
 * To filter the results by an specific movie service we can add the parameter _rater_ to the url. The API will lookup for ratings of movies rated by the specific movie service provided (case insensitive)
 All the filters may be combined along with pagination such in [http://localhost:8000/recommender/api/ratings/?page=1&genre=action&rater=netflix](http://localhost:8000/recommender/api/ratings/?page=1&genre=action&rater=netflix)
 ## Installation
+### Manual installation
 The application has been tested on Python 3.8.9, Django 3.2.7 and Django REST Framework 3.12.4 with the django-filters module.
 Considering Python is already installed and a virtual environment is created (out of the scope of this README file):
 * Installing Django
@@ -65,3 +66,46 @@ $ python -m pip install Django
 $ python -m pip install djangorestframework
 $ python -m pip install django-filter
 ```
+Then, clone the repository and navigate to the folder __project__ of the project to execute:
+```
+$  python manage.py runserver
+```
+And you should see something similar to:
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 12, 2021 - 11:36:04
+Django version 3.2.7, using settings 'project.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+Now you should be able to access at [http://localhost:8000/recommender](http://localhost:8000/recommender)
+#### Testing
+Some automated tests have been written and can be executed with:
+```
+$  python manage.py test recommender
+```
+### Docker
+The application is also available as a docker container. In order to deploy the docker, the docker engine needs to be installed.
+An example of the installation and execution of the docker would be:
+```
+$ docker pull jlujanp/movie-recommender
+```
+Once the image has been pulled, it can be deployed using:
+```
+$ docker run -it -p 8000:8000 jlujanp/movie-recommender
+```
+And again, you should see something similar to:
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 12, 2021 - 11:36:04
+Django version 3.2.7, using settings 'project.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+```
+Now you should be able to access at [http://localhost:8000/recommender](http://localhost:8000/recommender)
