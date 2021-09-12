@@ -2,12 +2,12 @@
 {% block title %}Top rated movies{% endblock title %}
 
 {% block genre_filter %}
-    {% if genres_list %}
-    <p>Available genres</p>
+    {% if genres_list %}   
+    <p class="fw-bold text-center" style="padding: .5rem .5rem">Genres</p> 
         <ul class="nav flex-column">
         {% for genre in genres_list %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'recommender:by_genre' genre %}">{{genre}}</a></li>
+                <a class="nav-link text-center" href="{% url 'recommender:by_genre' genre %}">{{genre}}</a></li>
         {% endfor %}
         </ul>
     {% else %}

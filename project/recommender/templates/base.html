@@ -31,22 +31,22 @@
 
     <body>
         {# The Document Body #}
-        <ul class="nav nav-fill">
+        <ul class="nav nav-fill" style="background-color: grey">
             <li class="nav-item">
-              <a class="nav-link active" href="{% url 'recommender:index' %}" style="text-align:initial">
+              <a class="nav-link active text-white fw-bolder" href="{% url 'recommender:index' %}" style="text-align:initial">
               Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/accounts/logout" style="text-align:end">
+              <a class="nav-link active text-white fw-bolder" href="/admin/logout" style="text-align:end">
               Logout ({{ user.username }})</a>
             </li>
         </ul>
         
-        <div id="site-wrapper" class="container">
+        <div id="site-wrapper" class="container_fluid">
             <div class="row">
-                <div id="sidebar" class="col-2">
+                <div id="sidebar border-end" class="col-2">
                 {% block genre_filter %}
-                    Block content template text
+                    Block sidebar template text
                 {% endblock genre_filter %}
                 </div>
                 <div id="table_content" class="col-10">
