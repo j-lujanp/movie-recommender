@@ -36,18 +36,18 @@ This admin site is accesible by default at: [http://localhost:8000/admin/](http:
 The user interface is a simple interface which includes a left panel listing all the available genres (this list is automatically populated taking into account the values of the field __genre__ of the Ratings) and a table with the recommendations. Choosing a Genre from the left panel will get you to a new page with the results filtered by that genre.
 Again, this is really simple and just to show a minimal functionality, pagination anf filtering should also be included in a new version.
 This recommender site is accesible by default at: [http://localhost:8000/recommender/](http://localhost:8000/recommender/)
-If we know the name of a genre we want to filter by, we can directly access to [http://localhost:8000/recommender/genre/{Genre}](http://localhost:8000/recommender/genre/Drama) where the lookup for the genre is case insensitive.
+If we know the name of a genre we want to filter by, we can directly access to [http://localhost:8000/recommender/genre/{Genre}/](http://localhost:8000/recommender/genre/Drama/) where the lookup for the genre is case insensitive.
 ## API
 In parallel to the user interface an API to access the models Rater and Rating has been generated. This API allow the classical methods to CREATE, READ, UPDATE and DELETE records.
 The base url (by default listening on port 8000) for the API is [http://localhost:8000/recommender/api/](http://localhost:8000/recommender/api/)
 ### Rater API
 This API allow us to :
 * get a list of all the raters of the application at [http://localhost:8000/recommender/api/raters/](http://localhost:8000/recommender/api/raters/)
-* perform a GET, PUT, PATCH or DELETE on a specific rater at [http://localhost:8000/recommender/api/raters/{rater_id}](http://localhost:8000/recommender/api/raters/1)
+* perform a GET, PUT, PATCH or DELETE on a specific rater at [http://localhost:8000/recommender/api/raters/{rater_id}/](http://localhost:8000/recommender/api/raters/1/)
 ### Rating API
 This API allow us to :
 * get a list of all the ratings of the application at [http://localhost:8000/recommender/api/ratings/](http://localhost:8000/recommender/api/ratings/) with a pagination of 10 elements per view. We can add the parameter _page={page_number}_ to the url to navigate to a specific page (for example: [http://localhost:8000/recommender/api/ratings/?page=1](http://localhost:8000/recommender/api/ratings/?page=1))
-* perform a GET, PUT, PATCH or DELETE on a specific rating at [http://localhost:8000/recommender/api/ratings/{rating_id}](http://localhost:8000/recommender/api/ratings/58)
+* perform a GET, PUT, PATCH or DELETE on a specific rating at [http://localhost:8000/recommender/api/ratings/{rating_id}/](http://localhost:8000/recommender/api/ratings/58/)
 #### Filtering
 The Rating API allow us to filter by genre and rater:
 * To filter the resuls by an specific genre we can add the parameter _genre_ to the url. The API will lookup for ratings of movies which genre description includes the genre (case insensitive)
@@ -81,7 +81,7 @@ Django version 3.2.7, using settings 'project.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
-Now you should be able to access at [http://localhost:8000/recommender](http://localhost:8000/recommender)
+Now you should be able to access at [http://localhost:8000/recommender/](http://localhost:8000/recommender/)
 #### Testing
 Some automated tests have been written and can be executed with:
 ```
@@ -108,4 +108,4 @@ Django version 3.2.7, using settings 'project.settings'
 Starting development server at http://0.0.0.0:8000/
 Quit the server with CONTROL-C.
 ```
-Now you should be able to access at [http://localhost:8000/recommender](http://localhost:8000/recommender)
+Now you should be able to access at [http://localhost:8000/recommender/](http://localhost:8000/recommender/)
