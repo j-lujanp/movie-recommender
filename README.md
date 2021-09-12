@@ -54,7 +54,7 @@ The Rating API allow us to filter by genre and rater:
 * To filter the results by an specific movie service we can add the parameter _rater_ to the url. The API will lookup for ratings of movies rated by the specific movie service provided (case insensitive)
 All the filters may be combined along with pagination such in [http://localhost:8000/recommender/api/ratings/?page=1&genre=action&rater=netflix](http://localhost:8000/recommender/api/ratings/?page=1&genre=action&rater=netflix)
 ## Installation
-The application has been tested on Python 3.8.9, Django 3.2 and Django REST Framework 3.12.4 with the django-filters module.
+The application has been tested on Python 3.8.9, Django 3.2.7 and Django REST Framework 3.12.4 with the django-filters module.
 Considering Python is already installed and a virtual environment is created (out of the scope of this README file):
 * Installing Django
 ```
